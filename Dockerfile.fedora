@@ -9,10 +9,12 @@ FROM fedora:latest
 ENV container=docker \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN dnf upgrade -y \
+RUN dnf -y upgrade \
     && dnf -y install man-db man-pages mlocate bash dash fish ksh mksh rc \
                       saphire tcsh tmux xonsh xs xyzsh yash zsh \
-    && dnf clean all
+    && dnf clean all \
+    && mandb -qsp \
+    && updatedb
 
 CMD ["/bin/bash"]
 
@@ -22,7 +24,7 @@ ENTRYPOINT ["/usr/local/bin/login.sh"]
 
 LABEL org.label-schema.name="Test Shells" \
       org.label-schema.vendor="awmyhr <awmyhr@gmail.com" \
-      org.label-schema.version="0.1.0-alpha" \
+      org.label-schema.version="0.2.0-alpha" \
       org.label-schema.release="2018-07-30" \
       org.label-schema.url="https://github.com/awmyhr/docker-testsh" \
       org.label-schema.vcs-type="git" \
