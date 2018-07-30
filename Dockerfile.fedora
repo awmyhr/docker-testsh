@@ -1,0 +1,32 @@
+# From template version: 1.0.0 (2017-03-03)
+# Author:    awmyhr
+# Created:   2018-07-30
+# Project:   Test Shells
+# Copyright: 2016 awmyhr
+# License:   Apache-2.0
+FROM fedora:latest
+
+ENV container=docker \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+RUN dnf upgrade -y \
+    && dnf -y install man-db man-pages mlocate bash dash fish ksh mksh rc \
+                      saphire tcsh tmux xonsh xs xyzsh yash zsh \
+    && dnf clean all
+
+CMD ["/bin/bash"]
+
+COPY usr-local-bin-login.sh /usr/local/bin/login.sh
+RUN  chmod 0755 /usr/local/bin/login.sh
+ENTRYPOINT ["/usr/local/bin/login.sh"]
+
+LABEL org.label-schema.name="Test Shells" \
+      org.label-schema.vendor="awmyhr <awmyhr@gmail.com" \
+      org.label-schema.version="0.1.0-alpha" \
+      org.label-schema.release="2018-07-30" \
+      org.label-schema.url="https://github.com/awmyhr/docker-testsh" \
+      org.label-schema.vcs-type="git" \
+      org.label-schema.vcs-url="https://github.com/awmyhr/docker-testsh" \
+      org.label-schema.summary="TODO: CHANGEME <100 char" \
+      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.schema-version='1.0.0-rc.1'
