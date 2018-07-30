@@ -1,0 +1,14 @@
+{
+  projectrc_version: '1.0.0',
+  contact_email: 'awmyhr@gmail.com',
+  contact_name: 'awmyhr',
+  email: 'awmyhr@gmail.com',
+  full_name: 'awmyhr',
+  project_home: 'https://github.com/awmyhr/docker-testsh',
+  project_name: 'Test Shells',
+  project_slug: 'docker-testsh',
+  project_abbr: 'testsh',
+  project_version: '0.1.0',
+  software_copyright: '2016 awmyhr',
+  software_license: 'Apache-2.0'
+}
