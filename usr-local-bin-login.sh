@@ -15,8 +15,8 @@
 #:"""
 #==============================================================================
 #-- Variables which are meta for the script should be dunders (__varname__)
-__version__='1.0.0' #: current version
-__revised__='20180727-105116' #: date of most recent revision
+__version__='1.0.1' #: current version
+__revised__='20180807-160106' #: date of most recent revision
 __contact__='awmyhr <awmyhr@gmail.com>' #: primary contact for support/?'s
 __synopsis__='Create a new user and login as that user.'
 __description__="
@@ -64,7 +64,7 @@ fi
 #==============================================================================
 #-- Check/set paramaters.
 if [ "z${ADD_UNAME}" = 'z' ] ; then ADD_UNAME='default'
-elif id "${ADD_UNAME}" >/dev/null 2>/&1 ; then
+elif id "${ADD_UNAME}" >/dev/null 2>&1 ; then
     exec su --login "${ADD_UNAME}"
     exit 0
 fi
