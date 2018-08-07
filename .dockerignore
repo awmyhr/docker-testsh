@@ -2,7 +2,7 @@
 # dockerignore [https://docs.docker.com/engine/reference/builder/#dockerignore-file]
 #------------------------------------------------------------------------------
 # Author:     awmyhr <awmyhr@gmail.com>
-# Revised:    20180807-160026
+# Revised:    20180807-160059
 # Created:    2018-08-07
 #==============================================================================
 #-- Default to ignore everything
@@ -11,3 +11,5 @@
 #------------------------------------------------------------------------------
 #-- Files actually needed for this project
 #------------------------------------------------------------------------------
+!/usr-local-bin-login.sh
+
