@@ -41,7 +41,7 @@ LABEL org.label-schema.name="${PROJECT}" \
       org.label-schema.url="https://github.com/awmyhr/docker-testsh" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/awmyhr/docker-testsh" \
-      org.label-schema.summary="TODO: CHANGEME <100 char" \
-      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.summary="For testing various shells, based on CentOS" \
+      org.label-schema.description="Includes the following shells: bash fish ksh mksh pwsh rc tcsh tmux zsh" \
       org.label-schema.schema-version='1.0.0-rc.1'
 #------------------------------------------------------------------------------
