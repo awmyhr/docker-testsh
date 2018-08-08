@@ -1,0 +1,43 @@
+#==============================================================================
+#-- From template version: 1.6.0 (2018-08-02)
+#==============================================================================
+FROM rhel:latest
+#------------------------------------------------------------------------------
+ENV PROJECT='Test Shells' \
+    AUTHOR='awmyhr' \
+    VERSION='1.0.0-rc' \
+    REVISED='2018-08-08' \
+    CREATED='2018-08-08' \
+    COPYRIGHT='2016 awmyhr' \
+    LICENSE='Apache-2.0' \
+    container=docker \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+#------------------------------------------------------------------------------
+#-- Not available: dash saphire xonsh xs xyzsh yash
+COPY usr-local-bin-login.sh /usr/local/bin/login.sh
+RUN chmod 0755 /usr/local/bin/login.sh \
+    && sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
+    && yum-config-manager -q --disable \* >/dev/null \
+    && yum-config-manager -q --enable rhel-7-server-rpms >/dev/null \
+    && yum -y update \
+    && yum -y install man-db man-pages mlocate bash ksh mksh tcsh tmux zsh \
+    && yum-config-manager -q --enable *epel* >/dev/null \
+    && yum -y install fish rc \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
+    && mandb -qsp \
+    && updatedb
+CMD ["/bin/bash"]
+ENTRYPOINT ["/usr/local/bin/login.sh"]
+#------------------------------------------------------------------------------
+LABEL org.label-schema.name="${PROJECT}" \
+      org.label-schema.vendor="awmyhr <awmyhr@gmail.com>" \
+      org.label-schema.version="${VERSION}" \
+      org.label-schema.release="${REVISED}" \
+      org.label-schema.url="https://github.com/awmyhr/docker-testsh" \
+      org.label-schema.vcs-type="git" \
+      org.label-schema.vcs-url="https://github.com/awmyhr/docker-testsh" \
+      org.label-schema.summary="TODO: CHANGEME <100 char" \
+      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.schema-version='1.0.0-rc.1'
+#------------------------------------------------------------------------------
